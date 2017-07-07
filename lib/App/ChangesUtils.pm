@@ -215,7 +215,10 @@ sub add_changes_entry_from_commits {
         close $fh or return [500, "Can't write dist.ini: $!"];
     }
 
-    [200, "OK"];
+    [200, "OK", undef, {
+        'func.entry' => $entry,
+        'func.version' => $version,
+    }];
 }
 
 1;
