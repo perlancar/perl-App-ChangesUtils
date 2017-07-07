@@ -133,7 +133,7 @@ sub add_changes_entry_from_commits {
         last unless -f "dist.ini";
         open my($fh), "<", "dist.ini"
             or return [500, "Can't open dist.ini: $!"];
-        my $content_dist_ini = do { local $/; ~~<$fh> };
+        $content_dist_ini = do { local $/; ~~<$fh> };
         if ($content_dist_ini =~ /^\s*version\s*=\s*(.+)/m) {
             $version = $1;
             log_trace("Extracted version from dist.ini: %s", $version);
@@ -206,7 +206,7 @@ sub add_changes_entry_from_commits {
     close $fh or return [500, "Can't write $args{filename}: $!"];
 
     # modify dist.ini
-    unless ($version_from_dist_ini) {
+    if ($version_from_dist_ini) {
         open $fh, ">", "dist.ini"
             or return [500, "Can't open dist.ini (2): $!"];
         $content_dist_ini =~ s/^(\s*version\s*=\s*)(.+)/${1}$version/m
