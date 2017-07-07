@@ -31,6 +31,8 @@ _
 
 sub _increment_version {
     require Version::Util;
+    require Text::Wrap;
+
     my $version = shift;
 
     log_trace("Incrementing version %s", $version);
