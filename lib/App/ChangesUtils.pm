@@ -113,6 +113,11 @@ _
             default => 1,
             cmdline_aliases => { n=>{} },
         },
+        reverse => {
+            summary => 'Reverse order of items',
+            schema => ['bool*', is=>1],
+            cmdline_aliases => {r=>{}},
+        },
     },
 };
 sub add_changes_entry_from_commits {
@@ -154,6 +159,8 @@ sub add_changes_entry_from_commits {
                        Proc::ChildError::explain_child_error()];
     my @commits = grep {/\S/} split /^commit .+?\n\n/ms, $ct_log;
     splice @commits, 0, $s if $s;
+
+    @commits = reverse @commits if $args{reverse};
 
     my $is_spec_dist = (-f ".tag-spec");
     my $is_data_dist = (-f ".tag-data");
