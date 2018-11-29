@@ -30,30 +30,16 @@ _
 );
 
 sub _increment_version {
-    require Version::Util;
+    require Versioning::Scheme::Perl;
     require Text::Wrap;
 
     my $version = shift;
 
     log_trace("Incrementing version %s", $version);
-    if ($version =~ /\A(\d+)\z/) {
-        $version = Version::Util::add_version($version, "1");
-    } elsif ($version =~ /\A(\d+\.)(\d+)\z/) {
-        $version = Version::Util::add_version(
-            $version, length($2) == 1 ? "0.1" :
-                length($2) == 2 ? "0.01" :
-                                   "0.001");
-    } elsif ($version =~ /\A(\d+\.\d+\.)(\d+)/) {
-        $version = Version::Util::add_version(
-            $version, length($2) == 1 ? "0.0.1" :
-                length($2) == 2 ? "0.0.01" :
-                "0.0.001");
-    } else {
-        die "Don't know how to increment version format '$version' ".
-            "(only recognize 123, 1.23, or 1.2.3";
-    }
-    log_trace("Will increment version to %s", $version);
-    $version;
+    my $version2 = Versioning::Scheme::Perl->bump_version($version);
+    $version2 = "$version2"; $version2 =~ s/\Av//;
+    log_trace("Will increment version to %s", $version2);
+    $version2;
 }
 
 sub _set_common_args {
