@@ -30,14 +30,13 @@ _
 );
 
 sub _increment_version {
-    require Versioning::Scheme::Perl;
+    require Versioning::Scheme::Dotted;
     require Text::Wrap;
 
     my $version = shift;
 
     log_trace("Incrementing version %s", $version);
-    my $version2 = Versioning::Scheme::Perl->bump_version($version);
-    $version2 = "$version2"; $version2 =~ s/\Av//;
+    my $version2 = Versioning::Scheme::Dotted->bump_version($version);
     log_trace("Will increment version to %s", $version2);
     $version2;
 }
