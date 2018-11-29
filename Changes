@@ -1,3 +1,8 @@
+0.004   2018-11-29 (Steven Haryanto)
+
+	- Replace Version::Util with Versioning::Scheme::Dotted.
+
+
 0.003   2017-08-03 (perlancar)
 
 	- Add option --reverse.
