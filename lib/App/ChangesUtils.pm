@@ -88,6 +88,11 @@ _
                 },
             },
         },
+        urgency => {
+            summary => 'Urgency of this release',
+            schema => ['str*', in=>['low','medium','high']],
+            cmdline_aliases => {u=>{}},
+        },
         num_skip_commits => {
             schema  => ['int*', min=>0],
             summary => 'Skip this number of commits first',
@@ -112,6 +117,7 @@ sub add_changes_entry_from_commits {
 
     _set_common_args(\%args);
     my $func_changes = $args{functional_changes} // 1;
+    my $urgency = $args{urgency} // ($func_changes ? 'medium' : 'low');
 
     my $version;
     my $content_dist_ini;
@@ -170,8 +176,8 @@ sub add_changes_entry_from_commits {
 
         my $date = POSIX::strftime("%Y-%m-%d", localtime);
         my $indent = length($version) + 2; $indent = 8 if $indent < 8;
-        $entry = sprintf "%-${indent}s%s (%s)\n\n",
-            $version, $date, $author;
+        $entry = sprintf "%-${indent}s%s  Released-By: %s; Urgency: %s\n\n",
+            $version, $date, $author, $urgency;
         for (@commits) {
             s/^\s+//s;
             s/\s+\z//s;
