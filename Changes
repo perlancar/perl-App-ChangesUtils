@@ -1,3 +1,8 @@
+0.005   2019-07-03  Released-By: Steven Haryanto; Urgency: medium
+
+	- Update to my new release note style, add --urgency option.
+
+
 0.004   2018-11-29 (Steven Haryanto)
 
 	- Replace Version::Util with Versioning::Scheme::Dotted.
