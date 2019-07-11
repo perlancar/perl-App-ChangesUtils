@@ -3,21 +3,21 @@
 	- Update to my new release note style, add --urgency option.
 
 
-0.004   2018-11-29 (Steven Haryanto)
+0.004   2018-11-29  Released-By: Steven Haryanto
 
 	- Replace Version::Util with Versioning::Scheme::Dotted.
 
 
-0.003   2017-08-03 (perlancar)
+0.003   2017-08-03  Released-By: perlancar
 
 	- Add option --reverse.
 
 
-0.002   2017-07-07 (Steven Haryanto)
+0.002   2017-07-07  Released-By: Steven Haryanto
 
         - Return some result meta.
 
 
-0.001   2017-07-07 (Steven Haryanto)
+0.001   2017-07-07  Released-By: Steven Haryanto
 
         - First release.
