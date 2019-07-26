@@ -1,3 +1,8 @@
+0.006   2019-07-26  Released-By: Steven Haryanto; Urgency: medium
+
+	- Export %arg_urgency.
+
+
 0.005   2019-07-03  Released-By: Steven Haryanto; Urgency: medium
 
 	- Update to my new release note style, add --urgency option.
