@@ -15,7 +15,7 @@ $SPEC{':package'} = {
     summary => 'CLI utilities related to distribution Changes file',
 };
 
-my %args_common = (
+our %args_common = (
     filename => {
         summary => 'Changes file',
         schema => 'filename*',
@@ -26,6 +26,14 @@ By default will search for files named `Changes`, `CHANGES`, `ChangeLog`,
 `CHANGELOG` in the current directory.
 
 _
+    },
+);
+
+our %arg_urgency = (
+    urgency => {
+        summary => 'Urgency of this release',
+        schema => ['str*', in=>['low','medium','high']],
+        cmdline_aliases => {u=>{}},
     },
 );
 
@@ -88,11 +96,7 @@ _
                 },
             },
         },
-        urgency => {
-            summary => 'Urgency of this release',
-            schema => ['str*', in=>['low','medium','high']],
-            cmdline_aliases => {u=>{}},
-        },
+        %arg_urgency,
         num_skip_commits => {
             schema  => ['int*', min=>0],
             summary => 'Skip this number of commits first',
