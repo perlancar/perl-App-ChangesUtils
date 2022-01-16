@@ -1,12 +1,14 @@
 package App::ChangesUtils;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 use Log::ger;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 our %SPEC;
 
@@ -39,7 +41,7 @@ our %arg_urgency = (
 
 sub _increment_version {
     require Versioning::Scheme::Dotted;
-    require Text::Wrap;
+    require Text::Wrap; local $Text::Wrap::unexpand = 0;
 
     my $version = shift;
 
