@@ -1,3 +1,8 @@
+0.008   2022-01-16  Released-By: Steven Haryanto; Urgency: medium
+
+        - [bugfix] Sigh, fix disabling Text::Wrap's tab output.
+
+
 0.007   2022-01-16  Released-By: Steven Haryanto; Urgency: medium
 
 	- [ux] Do not use tabs in generated Changes entry.
