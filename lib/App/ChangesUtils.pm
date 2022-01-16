@@ -41,7 +41,7 @@ our %arg_urgency = (
 
 sub _increment_version {
     require Versioning::Scheme::Dotted;
-    require Text::Wrap; local $Text::Wrap::unexpand = 0;
+    require Text::Wrap;
 
     my $version = shift;
 
@@ -188,6 +188,7 @@ sub add_changes_entry_from_commits {
             s/^\s+//s;
             s/\s+\z//s;
             $_ .= "." unless /\.\z/;
+            local $Text::Wrap::unexpand = 0;
             $entry .= Text::Wrap::wrap(
                 (" " x $indent) . "- ",
                 (" " x $indent) . "  ",
