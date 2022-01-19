@@ -1,12 +1,14 @@
 package App::ChangesUtils;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 use Log::ger;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 our %SPEC;
 
@@ -186,6 +188,7 @@ sub add_changes_entry_from_commits {
             s/^\s+//s;
             s/\s+\z//s;
             $_ .= "." unless /\.\z/;
+            local $Text::Wrap::unexpand = 0;
             $entry .= Text::Wrap::wrap(
                 (" " x $indent) . "- ",
                 (" " x $indent) . "  ",
